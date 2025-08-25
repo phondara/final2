@@ -1,0 +1,155 @@
+{
+  "info": {
+    "name": "Library Books API (Full CRUD)",
+    "_postman_id": "98765432-abcd-efgh-ijkl-1234567890ab",
+    "description": "Complete Postman collection for testing CRUD operations in the Library Books API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"john\",\n  \"email\": \"john@example.com\",\n  \"password\": \"StrongPass123\",\n  \"role\": \"member\"\n}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/api/users/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","users",""] }
+      }
+    },
+    {
+      "name": "Login (JWT)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"john\",\n  \"password\": \"StrongPass123\"\n}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/api/token/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","token",""] }
+      }
+    },
+    {
+      "name": "Refresh Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"refresh\": \"<refresh_token_here>\"\n}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/api/token/refresh/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","token","refresh",""] }
+      }
+    },
+    {
+      "name": "Create Author",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"J.K. Rowling\",\n  \"bio\": \"Author of Harry Potter\"\n}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/api/authors/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","authors",""] }
+      }
+    },
+    {
+      "name": "List Authors",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": { "raw": "http://127.0.0.1:8000/api/authors/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","authors",""] }
+      }
+    },
+    {
+      "name": "Update Author",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Joanne Rowling\",\n  \"bio\": \"British author best known for Harry Potter\"\n}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/api/authors/1/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","authors","1",""] }
+      }
+    },
+    {
+      "name": "Delete Author",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": { "raw": "http://127.0.0.1:8000/api/authors/1/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","authors","1",""] }
+      }
+    },
+    {
+      "name": "Create Book",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Harry Potter and the Sorcerer's Stone\",\n  \"description\": \"Fantasy novel\",\n  \"published_date\": \"1997-06-26\",\n  \"author_id\": 1\n}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/api/books/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","books",""] }
+      }
+    },
+    {
+      "name": "List Books",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": { "raw": "http://127.0.0.1:8000/api/books/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","books",""] }
+      }
+    },
+    {
+      "name": "Update Book",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Harry Potter and the Philosopher's Stone\",\n  \"description\": \"First book in the Harry Potter series\",\n  \"published_date\": \"1997-06-26\",\n  \"author_id\": 1\n}"
+        },
+        "url": { "raw": "http://127.0.0.1:8000/api/books/1/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","books","1",""] }
+      }
+    },
+    {
+      "name": "Delete Book",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": { "raw": "http://127.0.0.1:8000/api/books/1/", "host": ["127.0.0.1"], "port": "8000", "path": ["api","books","1",""] }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "access_token", "value": "" }
+  ]
+}
